@@ -10,10 +10,9 @@ export const getProducts = async (req, res) => {
         const orderQuery = ord !== undefined ? {price : ord} : {}
 
         
-        const products = await productModel.paginate(query , {limit: limite, page: pagina, orderQuery})
+        const products = await productModel.paginate(query , {limit: limite, page: pagina, orderQuery, lean: true});
 
-        res.status(200).send(products)
-        // res.status(200).render('templates-handlebars/home', {productos: products, js: 'productos.js', css: 'productos.css'})
+        res.status(200).render('templates-handlebars/home', {productos: products.docs, js: 'productos.js', css: 'productos.css'})
 
     } catch (error) {
         console.log("🔴🔴🔴 Error al consultar product: " + error.message)
