@@ -16,10 +16,9 @@ export const getCartByID = async (req, res) => {
   try {
     const { cid } = req.params;
     const cart = await cartModel.findById(cid).lean();
-    res.status(200).send(cart);
+    res.status(200).render('partials/cart', {products: cart.products , js: 'carts.js', css: 'carts.css'})
   } catch (error) {
     console.log("🔴🔴🔴 Error al obtener carrito: " + error.message);
-    console.log("Error al obtener carrito: ", error);
     console.log("Valor de error.message: ", error.message);
     res
       .status()

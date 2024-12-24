@@ -5,14 +5,14 @@ export const getProducts = async (req, res) => {
         const {limit, page, filter, metFilter, ord} = req.query;
 
         const pagina = page !== undefined ? page : 1;
-        const limite = limit !== undefined ? limit : 10;
+        const limite = limit !== undefined ? limit : 2;
         const query = metFilter !== undefined ? {[metFilter] : filter} : {};
         const orderQuery = ord !== undefined ? {price : ord} : {}
 
         
         const products = await productModel.paginate(query , {limit: limite, page: pagina, orderQuery, lean: true});
 
-        res.status(200).render('templates-handlebars/home', {productos: products.docs, js: 'productos.js', css: 'productos.css'})
+        res.status(200).render('templates-handlebars/home', {productos: products.docs, js: 'products.js', css: 'products.css'})
 
     } catch (error) {
         console.log("🔴🔴🔴 Error al consultar product: " + error.message)
