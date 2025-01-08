@@ -1,25 +1,13 @@
+<div class="container p-0">
+  <button
+    class="btn btn-primary"
+    type="button"
+    data-bs-toggle="offcanvas"
+    data-bs-target="#offcanvasRight"
+    aria-controls="offcanvasRight"
+  >Mostrar carrito de compras</button>
+</div>
 
-    {{!-- {{#each products}}
-        <div class="card m-2" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">{{id_prod.title}}</h5>
-                    <p class="card-text">Description: {{description}}</p>
-                    <p class="card-text">Code: {{code}}</p>
-                    <p class="card-text">Category: {{category}}</p>
-                    <p class="card-text">Price: ${{price}}</p>
-                    <p class="card-text">Stock: {{stock}}</p>
-                    <button type="button" class="btn btn-primary">Agregar al carrito</button>
-                </div>
-        </div>    
-    {{/each}} --}}
-
-<button
-  class="btn btn-primary"
-  type="button"
-  data-bs-toggle="offcanvas"
-  data-bs-target="#offcanvasRight"
-  aria-controls="offcanvasRight"
->Mostrar carrito de compras</button>
 
 <div
   class="offcanvas offcanvas-end"
@@ -27,7 +15,7 @@
   id="offcanvasRight"
   aria-labelledby="offcanvasRightLabel"
 >
-  <div class="offcanvas-header">
+  <div class="offcanvas-header p-1">
     <h5 id="offcanvasRightLabel">Carrito de compras</h5>
     <button
       type="button"
@@ -41,15 +29,15 @@
 
     {{#each products}}
 
-      <div class="card p-3 mb-2 bg-dark text-white">
+      <div class="card p-1 mb-2 bg-dark text-white">
         <div class="card-body">
           <h5 class="card-title">{{id_prod.title}}</h5>
           <p class="card-text">{{id_prod.description}}</p>
         </div>
         <ul class="list-group list-group-flush mb-2 bg-dark text-white">
-          <li class="list-group-item">Category: {{id_prod.category}}</li>
-          <li class="list-group-item">Price: ${{id_prod.price}}</li>
-          <li class="list-group-item">Agregado: {{quantity}}</li>
+          <li class="list-group-item bg-dark text-white">Category: {{id_prod.category}}</li>
+          <li class="list-group-item bg-dark text-white">Price: ${{id_prod.price}}</li>
+          <li class="list-group-item bg-dark text-white">Agregado: {{quantity}}</li>
         </ul>
         <div class="card-body">
           <a href="#" class="card-link">Ir al producto</a>

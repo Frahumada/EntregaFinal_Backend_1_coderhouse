@@ -6,6 +6,7 @@ import productRouter from './routes/productsRouters.js';
 import morgan from 'morgan';
 import { __dirname } from './path.js';
 import { errorHandler } from './middlewares/errorHandler.js';
+import { getProducts } from './controllers/products.controllers.js';
 
 
 const app = express();
@@ -23,12 +24,12 @@ app.set('view engine', 'handlebars');
 
 app.use('/api/carts/', cartRouter);
 app.use('/api/products/', productRouter);
-
+// app.use('/', productRouter);
 
 app.use(errorHandler);
 
 app.get('/', (req, res) => {
-    res.status(200).render('templates/home', {productos: products, js: 'productos.js', css: 'productos.css'})
+    res.status(200).render('templates-handlebars/home.handlebars', {js: 'productos.js', css: 'productos.css'})
 });
 
 const PORT = 8080;
